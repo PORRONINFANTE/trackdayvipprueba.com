@@ -1,17 +1,18 @@
 let language='es',filter='all',photoIndex=0,lastFocus=null,detailType=null;
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const page=document.body.dataset.page;
-const photos=[{src:'grid',alt:'gridAlt',title:'gallery1',category:'paddock'},{src:'porsche',alt:'porscheAlt',title:'gallery2',category:'track'},{src:'pitlane',alt:'pitlaneAlt',title:'gallery3',category:'paddock'},{src:'convoy',alt:'convoyAlt',title:'gallery4',category:'track'},{src:'hero',alt:'heroAlt',title:'gallery5',category:'track'}];
+const photos=[{src:'grid',alt:'gridAlt',title:'gallery1',category:'paddock'},{src:'porsche',alt:'porscheAlt',title:'gallery2',category:'track'},{src:'pitlane',alt:'pitlaneAlt',title:'gallery3',category:'paddock'},{src:'convoy',alt:'convoyAlt',title:'gallery4',category:'track'},{src:'hero',alt:'heroAlt',title:'gallery5',category:'track'},{src:'record',alt:'recordAlt',title:'eventGalleryRecord',category:'events'},{src:'circuits',alt:'eventGalleryCircuits',title:'eventGalleryCircuits',category:'events'},{src:'partners',alt:'eventGalleryPartners',title:'eventGalleryPartners',category:'events'}];
 function updateCount(){const counter=$('#photo-count');if(counter)counter.textContent=String($$('.photo-card:not([hidden])').length).padStart(2,'0')+(language==='es'?' FOTOS':' PHOTOS');}
 function setLanguage(next){
 language=next;const t=translations[next];document.documentElement.lang=next;
-const names={news:'Breaking News',calendar:'Calendar',gallery:'Photo Galleries',championship:t.navChamp,partners:'Partners',article:'SEMA Show 2026'};
+const names={home:t.homeNav,news:'Breaking News',calendar:'Calendar',gallery:'Photo Galleries',championship:t.navChamp,partners:'Partners',article:'SEMA Show 2026'};
 document.title=names[page]+' | Trackday VIP';
 $('meta[name="description"]').content=names[page]+(next==='es'?' — El mundo Trackday VIP Motorsport México.':' — The world of Trackday VIP Motorsport Mexico.');
 $$('[data-t]').forEach(el=>{if(t[el.dataset.t])el.innerHTML=t[el.dataset.t]});
 $$('[data-alt]').forEach(el=>{el.alt=t[el.dataset.alt]});
 $$('[data-lang]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.lang===next)));
 if($('#article-content'))$('#article-content').innerHTML=article[next];
+$$('[data-contact]').forEach(el=>{const platform=el.dataset.contact;el.setAttribute('aria-label',platform==='instagram'?'Instagram @trackday.vip':(platform==='email'?'Email':'WhatsApp')+(language==='es'?' — próximamente':' — coming soon'))});
 updateCount();if($('#photo-dialog').open)renderPhoto();if($('#detail-dialog').open)renderDetail();
 }
 $$('[data-lang]').forEach(button=>button.addEventListener('click',()=>{setLanguage(button.dataset.lang);try{localStorage.setItem('trackday-language',language)}catch{}}));
@@ -46,3 +47,10 @@ const text=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Trackday VIP//Calendar//E
 const url=URL.createObjectURL(new Blob([text],{type:'text/calendar;charset=utf-8'}));const link=document.createElement('a');link.href=url;link.download='SEMA-Show-2026.ics';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 });
 if('IntersectionObserver' in window){const reveal=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('reveal-in');reveal.unobserve(entry.target)}}),{threshold:.12});$$('.news-layout,.calendar-layout,.gallery-heading,.champ-layout,.partners-heading').forEach(el=>reveal.observe(el))}
+
+const contacts=window.TRACKDAY_CONTACTS||{};
+$$('[data-contact]').forEach(link=>{
+const value=contacts[link.dataset.contact];
+if(value){link.href=value;link.removeAttribute('aria-disabled');link.setAttribute('target','_blank');link.setAttribute('rel','noopener noreferrer');}
+else {const notify=e=>{e.preventDefault();$('#contact-status').textContent=translations[language].contactUnavailable;};link.addEventListener('click',notify);link.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){notify(e)}});}
+});
