@@ -1,3 +1,18 @@
+function normalizeArrows(root=document.body){
+ const paths={'↗':'M5 19 19 5M5 5h14v14','→':'M4 12h16M13 5l7 7-7 7','←':'M20 12H4m7-7-7 7 7 7','↑':'M12 20V4m-7 7 7-7 7 7','↓':'M12 4v16m-7-7 7 7 7-7','↔':'M3 12h18M8 7l-5 5 5 5m8-10 5 5-5 5'};
+ const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+ const nodes=[];while(walker.nextNode()){const node=walker.currentNode;if(!node.parentElement.closest('svg,script,style,textarea')&&/[↗→←↑↓↔]/.test(node.nodeValue))nodes.push(node);}
+ for(const node of nodes){
+ const fragment=document.createDocumentFragment();
+ for(const piece of node.nodeValue.split(/([↗→←↑↓↔]\uFE0F?)/g)){
+ const direction=piece[0];if(paths[direction]&&piece.length<=2){
+ const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('class','icon-arrow');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('aria-hidden','true');svg.setAttribute('focusable','false');
+ const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',paths[direction]);svg.append(path);fragment.append(svg);
+ }else fragment.append(document.createTextNode(piece));
+ }node.replaceWith(fragment);
+ }
+}
+
 let language='es',filter='all',photoIndex=0,lastFocus=null,detailType=null;
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const page=document.body.dataset.page;
@@ -13,7 +28,7 @@ $$('[data-alt]').forEach(el=>{el.alt=t[el.dataset.alt]});
 $$('[data-lang]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.lang===next)));
 if($('#article-content'))$('#article-content').innerHTML=article[next];
 $$('[data-contact]').forEach(el=>{const platform=el.dataset.contact;el.setAttribute('aria-label',platform==='instagram'?'Instagram @trackday.vip':(platform==='email'?'Email':'WhatsApp')+(language==='es'?' — próximamente':' — coming soon'))});
-updateCount();if($('#photo-dialog').open)renderPhoto();if($('#detail-dialog').open)renderDetail();
+updateCount();if($('#photo-dialog').open)renderPhoto();if($('#detail-dialog').open)renderDetail();normalizeArrows();
 }
 $$('[data-lang]').forEach(button=>button.addEventListener('click',()=>{setLanguage(button.dataset.lang);try{localStorage.setItem('trackday-language',language)}catch{}}));
 let saved;try{saved=localStorage.getItem('trackday-language')}catch{}setLanguage(saved==='en'?'en':'es');

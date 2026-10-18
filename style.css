@@ -267,3 +267,6 @@ body:not([data-page=home]) main>.section{background-color:#11130f9c}
 body:not([data-page=home]){background-attachment:scroll}
 }
 @media(prefers-reduced-motion:reduce){.cinematic-photo{animation:none}}
+
+.icon-arrow{display:inline-block;width:1em;height:1em;vertical-align:-.15em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
