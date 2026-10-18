@@ -270,3 +270,80 @@ body:not([data-page=home]){background-attachment:scroll}
 
 .icon-arrow{display:inline-block;width:1em;height:1em;vertical-align:-.15em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 
+/* Readability scale: headlines stay dominant; supporting copy is comfortably legible. */
+:root{--muted:#adb3a4}
+.micro,.label,.section-label{font-size:12px;line-height:1.65;letter-spacing:1.3px}
+.section-top>.micro{font-size:11px;line-height:1.6;letter-spacing:1px}
+.section-label{font-size:12px}
+.desktop-nav{font-size:15px}
+.languages button{font-size:12px}
+.text-button,.text-link,.compact{font-size:12px;line-height:1.6;letter-spacing:1px}
+.gold-button,.cinematic-actions .gold-button,.event-story-actions .gold-button{font-size:12px;line-height:1.5}
+.cinematic-caption .label,.event-story-copy>.label,.editorial-news-layout>div>.label,.champ-copy .label{font-size:12px;line-height:1.6;letter-spacing:1.4px}
+.cinematic-caption>p{font-size:17px;line-height:1.75}
+.hero-text-link{font-size:12px;line-height:1.6}
+.cinematic-bottom{font-size:11px;line-height:1.6;letter-spacing:1px;gap:20px}
+.news-copy>p,.section-intro,.event-story-copy>p:not(.label),.editorial-news-layout>div>p:not(.label),.calendar-artworks>div>p:not(.section-label){font-size:16px;line-height:1.8}
+.article-category,.pill{font-size:12px;line-height:1.6;letter-spacing:1px}
+.news-facts small,.date-block>span,.date-block small{font-size:12px;line-height:1.6;letter-spacing:.7px}
+.event p,.calendar-note,.driver p,.standings-note{font-size:14px;line-height:1.75}
+.event-lap>small,.photo-mosaic small,.photo-overlay small{font-size:12px;line-height:1.6;letter-spacing:1.1px}
+.filters button{font-size:12px;line-height:1.5;padding:11px 19px}
+.gallery-tools p,.gallery-bottom>.micro{font-size:11px;letter-spacing:.8px;line-height:1.65}
+.sema-art>.micro,.art-bottom,.news-date-tile>span{font-size:11px;line-height:1.6;letter-spacing:1px}
+.art-bottom{height:58px;gap:18px}
+.breadcrumbs{font-size:13px;line-height:1.6}
+.article-sidebar>.section-label,.article-sidebar>p:not(.section-label),.article-date small{font-size:12px;line-height:1.7;letter-spacing:.7px}
+.article-page .article-body .source-links{font-size:13px;line-height:1.8}
+.poster-note{font-size:13px;line-height:1.7}
+.dialog-toolbar>.micro,.viewer-controls .micro{font-size:11px;line-height:1.6;letter-spacing:1px}
+.page-navigation .micro{font-size:11px;line-height:1.6;letter-spacing:1px}
+.footer-brand>p{font-size:16px;line-height:1.75}
+.footer-brand>.micro,.footer-main h2{font-size:12px;line-height:1.6;letter-spacing:1.2px}
+.footer-navigation>a,.social-handle{font-size:15px;line-height:1.7}
+.social-icon>span,.contact-pending-note,#contact-status{font-size:12px;line-height:1.7}
+.footer-legal{font-size:12px;line-height:1.8;color:#a5ad99}
+@media(max-width:760px){
+.micro,.label,.section-label{font-size:11px;line-height:1.6;letter-spacing:1px}
+.section-top{align-items:flex-start;gap:15px}
+.section-top>.micro{font-size:10.5px;line-height:1.6;letter-spacing:.5px;max-width:42%}
+.cinematic-caption .label,.event-story-copy>.label,.editorial-news-layout>div>.label,.champ-copy .label{font-size:11px;line-height:1.6;letter-spacing:1px}
+.cinematic-caption>p{font-size:15px;line-height:1.75}
+.cinematic-actions .gold-button,.event-story-actions .gold-button,.gold-button{font-size:12px;line-height:1.5}
+.hero-text-link,.text-button,.compact,.text-link{font-size:12px;line-height:1.6;letter-spacing:.8px}
+.cinematic-bottom{font-size:10px;letter-spacing:.5px;gap:15px;align-items:center}
+.cinematic-bottom>span{max-width:55%}
+.cinematic-bottom>a{max-width:40%;text-align:right}
+.news-copy>p,.section-intro,.event-story-copy>p:not(.label),.editorial-news-layout>div>p:not(.label),.calendar-artworks>div>p:not(.section-label){font-size:15px;line-height:1.8}
+.article-category,.pill{font-size:11px;line-height:1.6;letter-spacing:.7px}
+.news-facts{gap:20px}
+.news-facts small{font-size:11px;line-height:1.6;letter-spacing:.3px}
+.date-block>span,.date-block small{font-size:11px;line-height:1.6;letter-spacing:.2px}
+.date-block{min-width:80px;padding-right:15px}
+.event{gap:18px}
+.event p,.calendar-note,.driver p,.standings-note{font-size:13px;line-height:1.75}
+.event-lap>small,.photo-mosaic small,.photo-overlay small{font-size:11px;line-height:1.6;letter-spacing:.6px}
+.filters{gap:7px}
+.filters button{font-size:11px;padding:11px 15px;letter-spacing:.5px}
+.gallery-tools p,.gallery-bottom>.micro{font-size:11px;line-height:1.65;letter-spacing:.4px}
+.photo-mosaic a>span{left:12px;right:12px}
+.photo-mosaic small{display:block;max-width:80%}
+.sema-art>.micro,.art-bottom,.news-date-tile>span{font-size:10.5px;line-height:1.5;letter-spacing:.6px}
+.art-bottom{height:55px}
+.breadcrumbs{font-size:12px;line-height:1.6;gap:10px}
+.article-sidebar>.section-label,.article-sidebar>p:not(.section-label),.article-date small{font-size:11px;line-height:1.7;letter-spacing:.4px}
+.article-page .article-body p{font-size:15px;line-height:1.85}
+.article-page .article-body .source-links{font-size:12px;line-height:1.8}
+.poster-note{font-size:12px;line-height:1.7}
+.dialog-toolbar>.micro,.viewer-controls .micro{font-size:10.5px;line-height:1.6;letter-spacing:.5px}
+.page-navigation .micro{font-size:10.5px;line-height:1.6;letter-spacing:.5px}
+.page-navigation strong{font-size:23px}
+.footer-brand>p{font-size:15px;line-height:1.75}
+.footer-brand>.micro,.footer-main h2{font-size:12px;line-height:1.6;letter-spacing:1px}
+.footer-navigation>a,.social-handle{font-size:15px;line-height:1.7}
+.social-icon>span,.contact-pending-note,#contact-status{font-size:12px;line-height:1.7}
+.footer-legal{font-size:12px;line-height:1.8}
+.mobile-dock a{font-family:var(--display);font-size:13px;line-height:1.25;font-weight:500;min-height:54px}
+.mobile-dock a>span{max-width:100%;overflow-wrap:anywhere;text-align:center}
+}
+@media(max-width:360px){.mobile-dock a{font-size:12px}.date-block{min-width:70px;padding-right:12px}.event{gap:14px}.languages button{font-size:11px}}
