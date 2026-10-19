@@ -447,3 +447,9 @@ body.no-scroll .floating-whatsapp-main{visibility:hidden}
 .mobile-dock a[href="contact.html"]{background:var(--gold);color:var(--ink);border:1px solid var(--gold);border-radius:10px}
 .mobile-dock a[href="contact.html"][aria-current=page]{background:var(--ink);color:var(--gold)}
 }
+
+.news-copy>p.editor-credit,.article-page .article-body p.editor-credit{font-size:13px;font-weight:500;line-height:1.7;letter-spacing:.3px;color:var(--gold);margin:16px 0 25px}
+
+
+.footer-legal .copyright-symbol{display:inline-block;font-size:22px;line-height:1;vertical-align:-.12em;margin-right:3px}
+
