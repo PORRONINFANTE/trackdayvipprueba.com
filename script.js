@@ -27,7 +27,7 @@ $$('[data-t]').forEach(el=>{if(t[el.dataset.t])el.innerHTML=t[el.dataset.t]});
 $$('[data-alt]').forEach(el=>{el.alt=t[el.dataset.alt]});
 $$('[data-lang]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.lang===next)));
 if($('#article-content'))$('#article-content').innerHTML=article[next];
-$$('[data-contact]').forEach(el=>{const platform=el.dataset.contact;el.setAttribute('aria-label',platform==='instagram'?'Instagram @trackday.vip':(platform==='email'?'Email':'WhatsApp')+(language==='es'?' — próximamente':' — coming soon'))});
+$$('[data-contact]').forEach(el=>{const platform=el.dataset.contact;el.setAttribute('aria-label',platform==='instagram'?'Instagram @trackday.vip':platform==='email'?'Email direcciongral@trackdayvip.com':'WhatsApp +52 443 945 7617')});
 updateCount();if($('#photo-dialog').open)renderPhoto();if($('#detail-dialog').open)renderDetail();normalizeArrows();
 }
 $$('[data-lang]').forEach(button=>button.addEventListener('click',()=>{setLanguage(button.dataset.lang);try{localStorage.setItem('trackday-language',language)}catch{}}));
@@ -66,6 +66,6 @@ if('IntersectionObserver' in window){const reveal=new IntersectionObserver(entri
 const contacts=window.TRACKDAY_CONTACTS||{};
 $$('[data-contact]').forEach(link=>{
 const value=contacts[link.dataset.contact];
-if(value){link.href=value;link.removeAttribute('aria-disabled');link.setAttribute('target','_blank');link.setAttribute('rel','noopener noreferrer');}
+if(value){link.href=value;link.removeAttribute('aria-disabled');if(value.startsWith('mailto:'))link.removeAttribute('target');else link.setAttribute('target','_blank');link.setAttribute('rel','noopener noreferrer');}
 else {const notify=e=>{e.preventDefault();$('#contact-status').textContent=translations[language].contactUnavailable;};link.addEventListener('click',notify);link.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){notify(e)}});}
 });

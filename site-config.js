@@ -1,6 +1,5 @@
-/* Add the client's remaining destinations here when provided. */
 window.TRACKDAY_CONTACTS = {
   instagram: 'https://www.instagram.com/trackday.vip/',
-  whatsapp: '',
-  email: ''
+  whatsapp: 'https://wa.me/524439457617',
+  email: 'mailto:direcciongral@trackdayvip.com'
 };

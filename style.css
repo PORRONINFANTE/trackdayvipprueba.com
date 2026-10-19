@@ -347,3 +347,27 @@ body:not([data-page=home]){background-attachment:scroll}
 .mobile-dock a>span{max-width:100%;overflow-wrap:anywhere;text-align:center}
 }
 @media(max-width:360px){.mobile-dock a{font-size:12px}.date-block{min-width:70px;padding-right:12px}.event{gap:14px}.languages button{font-size:11px}}
+/* Mexico identity and direct contact on every page. */
+.site-header .edition{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:6px}
+.country-badge{display:flex;align-items:center;gap:7px;color:#e0e2d9;font-family:var(--body);font-size:10px;line-height:1.2;font-weight:600;letter-spacing:1.5px}
+.site-header .edition .country-badge img{width:24px;height:16px;object-fit:cover;border-radius:2px;box-shadow:0 0 0 1px #ffffff25}
+.real-contact-details{display:flex;flex-direction:column;gap:16px;margin:42px 0 0}
+.real-contact-details>a{display:block;color:#e0e3d8;font-size:15px;line-height:1.7;overflow-wrap:anywhere}
+.real-contact-details>a>span{display:block;font-size:11px;letter-spacing:1px;color:var(--muted);margin-bottom:2px}
+.real-contact-details>a:hover{color:var(--gold)}
+.floating-whatsapp-main{position:fixed;right:26px;bottom:26px;z-index:22;display:grid;place-items:center;width:60px;height:60px;border-radius:50%;background:#25d366;color:#fff;box-shadow:0 6px 25px #0006;transition:transform .2s,background .2s}
+.floating-whatsapp-main>svg{height:31px;width:31px;fill:currentColor}
+.floating-whatsapp-main:hover{background:#1ebe5d;transform:translateY(-3px)}
+.floating-whatsapp-main:focus-visible{outline:3px solid #fff;outline-offset:5px}
+.floating-whatsapp-main>span{position:absolute;right:74px;white-space:nowrap;opacity:0;transform:translateX(5px);background:#fff;color:#143e23;font-size:13px;font-weight:600;line-height:1.5;padding:10px 15px;border-radius:8px;box-shadow:0 4px 18px #0003;transition:opacity .2s,transform .2s;pointer-events:none}
+.floating-whatsapp-main:hover>span,.floating-whatsapp-main:focus-visible>span{opacity:1;transform:translateX(0)}
+body.no-scroll .floating-whatsapp-main{visibility:hidden}
+@media(max-width:760px){
+.site-header .edition{gap:5px}
+.country-badge{font-size:9px;letter-spacing:1.2px;gap:6px}
+.site-header .edition .country-badge img{width:21px;height:14px}
+.floating-whatsapp-main{width:56px;height:56px;right:18px;bottom:calc(100px + env(safe-area-inset-bottom))}
+.floating-whatsapp-main>svg{width:29px;height:29px}
+.real-contact-details{margin-top:42px;gap:18px}
+.real-contact-details>a{font-size:15px}
+}
