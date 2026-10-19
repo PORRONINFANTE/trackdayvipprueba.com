@@ -496,3 +496,9 @@ body.no-scroll .floating-whatsapp-main{visibility:hidden}
 /* Gold restored only to the SEMA date and details sidebar. */
 .article-page .article-sidebar{--gold:#e8c372}.article-page .article-sidebar .text-button{border-bottom-color:#e8c37266}
 
+
+/* Decorative motion is restricted to the rear background layer. */
+.section-gold-background{z-index:-1!important}.cinematic-hero>.section-gold-background,.event-story>.section-gold-background{display:none!important}.section>:not(.section-gold-background),.partner-ribbon>:not(.section-gold-background),.full-footer>:not(.section-gold-background){position:relative;z-index:1}.sema-original-logo,.sema-sidebar-logo{background:#080908}.cinematic-hero .hero-hairline{display:none}
+
+/* Preserve the supplied logo transparency and give it a full mobile row. */
+.sema-original-logo,.sema-sidebar-logo{background:transparent!important}.article-sidebar .sema-sidebar-logo{display:block;justify-self:center;margin-inline:auto}@media(max-width:760px){.article-page-layout .article-sidebar{width:100%;align-self:stretch}.article-sidebar .sema-sidebar-logo{grid-column:1/-1;width:100%;max-width:480px;height:auto;margin:0 auto 18px}.sema-art .sema-original-logo{width:94%;margin-inline:auto}.news-date-tile .sema-original-logo{width:100%;max-height:200px;margin-inline:auto}}
