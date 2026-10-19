@@ -451,5 +451,30 @@ body.no-scroll .floating-whatsapp-main{visibility:hidden}
 .news-copy>p.editor-credit,.article-page .article-body p.editor-credit{font-size:13px;font-weight:500;line-height:1.7;letter-spacing:.3px;color:var(--gold);margin:16px 0 25px}
 
 
-.footer-legal .copyright-symbol{display:inline-block;font-size:22px;line-height:1;vertical-align:-.12em;margin-right:3px}
+.full-footer .footer-legal{font-size:14px;line-height:1.7}.footer-legal .copyright-symbol{font-size:inherit;line-height:inherit;vertical-align:baseline;margin:0}
 
+
+/* Client-supplied SEMA artwork */
+.sema-feature-image{display:block;width:100%;height:auto;margin:24px 0 30px;border:1px solid var(--line)}
+
+
+/* Homepage championship introduction */
+.home-about{display:grid;grid-template-columns:1fr 1.15fr;gap:8%;align-items:start;background:radial-gradient(ellipse at 0 0,#bb965e0d,transparent 65%);border-bottom:1px solid var(--line)}
+.home-about-heading .section-label{display:block;margin:0 0 24px;color:var(--gold)}
+.home-about h2{font-size:clamp(36px,4.5vw,64px);line-height:1.03}
+.about-rule{display:block;width:64px;height:3px;background:var(--gold);margin-top:28px}
+.home-about-copy p{font-size:17px;line-height:1.9;color:#b6baad;margin:0 0 22px;max-width:640px}
+.home-about-copy .about-lead{font-size:20px;line-height:1.75;color:var(--white)}
+.home-about-copy strong{font-weight:600;color:var(--gold)}
+@media(max-width:760px){.home-about{grid-template-columns:1fr;gap:28px}.home-about h2{font-size:clamp(36px,10vw,48px)}.home-about-heading .section-label{margin-bottom:18px}.about-rule{margin-top:22px}.home-about-copy p{font-size:16px;line-height:1.85}.home-about-copy .about-lead{font-size:18px;line-height:1.75}.home-about-copy p:last-child{margin-bottom:0}}
+
+/* Continuous partner ribbon, including the requested reduced-motion override. */
+.partner-ribbon{padding:30px 0 36px;border-bottom:1px solid var(--line);background:#070807;overflow:hidden}.partner-ribbon-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 4.5% 25px}.partner-ribbon-link{font-size:12px;letter-spacing:1px;color:var(--gold);border-bottom:1px solid #bb965e70;padding-bottom:5px}.partner-marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}.partner-marquee-track{display:flex;width:max-content;animation:partners-travel 42s linear infinite!important;will-change:transform}.partner-marquee-group{display:flex;flex-shrink:0;align-items:center;gap:48px;padding-right:48px}.partner-marquee-group img{flex:none;width:160px;height:78px;object-fit:contain;max-width:none}@keyframes partners-travel{from{transform:translateX(0)}to{transform:translateX(-50%)}}.floating-whatsapp-main{display:flex;align-items:center;justify-content:center;padding:0;line-height:1}.floating-whatsapp-main>svg{display:block;flex:none;overflow:visible}@media(max-width:760px){.partner-ribbon-heading{padding-inline:6%;align-items:flex-start}.partner-ribbon-heading .section-label{max-width:180px;line-height:1.6}.partner-ribbon-link{font-size:11px;line-height:1.6}.partner-marquee-group{gap:30px;padding-right:30px}.partner-marquee-group img{width:125px;height:64px}}
+
+/* Four preloaded copies keep the ribbon filled throughout the loop. */
+.partner-marquee-track{width:max-content;flex-wrap:nowrap;animation-name:partners-seamless!important}.partner-marquee-group{width:2704px;min-width:2704px;flex:0 0 2704px;box-sizing:border-box}.partner-marquee-group img{width:160px;min-width:160px;flex:0 0 160px}@keyframes partners-seamless{from{transform:translate3d(0,0,0)}to{transform:translate3d(-2704px,0,0)}}@media(max-width:760px){.partner-marquee-group{width:2015px;min-width:2015px;flex-basis:2015px}.partner-marquee-group img{width:125px;min-width:125px;flex-basis:125px}@keyframes partners-seamless{from{transform:translate3d(0,0,0)}to{transform:translate3d(-2015px,0,0)}}}
+
+/* Supplied WhatsApp artwork, displayed without distortion. */
+.floating-whatsapp-main,.floating-whatsapp-main:hover{background:transparent;border-radius:0;box-shadow:none;filter:drop-shadow(0 4px 10px #0005)}.floating-whatsapp-main>img{display:block;width:100%;height:100%;object-fit:contain;flex:none}
+
+.floating-whatsapp-main>.whatsapp-vector{display:block;width:100%;height:100%;flex:none;overflow:visible}

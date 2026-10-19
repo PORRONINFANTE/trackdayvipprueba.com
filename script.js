@@ -16,13 +16,13 @@ function normalizeArrows(root=document.body){
 let language='es',filter='all',photoIndex=0,lastFocus=null,detailType=null;
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const page=document.body.dataset.page;
-const photos=[{src:'grid',alt:'gridAlt',title:'gallery1',category:'paddock'},{src:'porsche',alt:'porscheAlt',title:'gallery2',category:'track'},{src:'pitlane',alt:'pitlaneAlt',title:'gallery3',category:'paddock'},{src:'convoy',alt:'convoyAlt',title:'gallery4',category:'track'},{src:'hero',alt:'heroAlt',title:'gallery5',category:'track'},{src:'record',alt:'recordAlt',title:'eventGalleryRecord',category:'events'},{src:'circuits',alt:'eventGalleryCircuits',title:'eventGalleryCircuits',category:'events'},{src:'partners',alt:'eventGalleryPartners',title:'eventGalleryPartners',category:'events'}];
+const photos=[{src:'grid',alt:'gridAlt',title:'gallery1',category:'paddock'},{src:'porsche',alt:'porscheAlt',title:'gallery2',category:'track'},{src:'pitlane',alt:'pitlaneAlt',title:'gallery3',category:'paddock'},{src:'convoy',alt:'convoyAlt',title:'gallery4',category:'track'},{src:'hero',alt:'heroAlt',title:'gallery5',category:'track'},{src:'record',alt:'recordAlt',title:'eventGalleryRecord',category:'events'},{src:'circuits',alt:'eventGalleryCircuits',title:'eventGalleryCircuits',category:'events'},{src:'partners',alt:'eventGalleryPartners',title:'eventGalleryPartners',category:'events'},{src:'mini-track',ext:'png',alt:'miniAlt',title:'miniAlt',category:'track'},{src:'lamborghini-paddock',ext:'png',alt:'lamboAlt',title:'lamboAlt',category:'paddock'},{src:'porsche-track',ext:'png',alt:'porscheTrackAlt',title:'porscheTrackAlt',category:'track'}];
 function updateCount(){const counter=$('#photo-count');if(counter)counter.textContent=String($$('.photo-card:not([hidden])').length).padStart(2,'0')+(language==='es'?' FOTOS':' PHOTOS');}
 function setLanguage(next){
 language=next;const t=translations[next];document.documentElement.lang=next;
 const names={home:t.homeNav,contact:t.navContact,news:'Breaking News',calendar:'Calendar',gallery:'Photo Galleries',championship:t.navChamp,partners:'Partners',article:'SEMA Show 2026'};
 document.title=names[page]+' | Trackday VIP';
-$('meta[name="description"]').content=names[page]+(next==='es'?' — El mundo Trackday VIP Motorsport México.':' — The world of Trackday VIP Motorsport Mexico.');
+$('meta[name="description"]').content=names[page]+(next==='es'?' — El mundo Trackday VIP Motorsport Series.':' — The world of Trackday VIP Motorsport Series.');
 $$('[data-t]').forEach(el=>{if(t[el.dataset.t])el.innerHTML=t[el.dataset.t]});
 $$('[data-alt]').forEach(el=>{el.alt=t[el.dataset.alt]});
 $$('[data-lang]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.lang===next)));
@@ -49,7 +49,7 @@ dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoun
 dialog.addEventListener('close',()=>{document.body.classList.remove('no-scroll');if(lastFocus)lastFocus.focus()});
 });
 function visiblePhotos(){return photos.map((p,i)=>i).filter(i=>filter==='all'||photos[i].category===filter)}
-function renderPhoto(){const p=photos[photoIndex],t=translations[language];$('#viewer-image').src='assets/'+p.src+'.webp';$('#viewer-image').alt=t[p.alt];$('#viewer-caption').textContent=t[p.title];const visible=visiblePhotos();$('#viewer-count').textContent=String(visible.indexOf(photoIndex)+1).padStart(2,'0')+' / '+String(visible.length).padStart(2,'0')}
+function renderPhoto(){const p=photos[photoIndex],t=translations[language];$('#viewer-image').src='assets/'+p.src+'.'+(p.ext||'webp');$('#viewer-image').alt=t[p.alt];$('#viewer-caption').textContent=t[p.title];const visible=visiblePhotos();$('#viewer-count').textContent=String(visible.indexOf(photoIndex)+1).padStart(2,'0')+' / '+String(visible.length).padStart(2,'0')}
 function photoMove(dir){const visible=visiblePhotos();photoIndex=visible[(visible.indexOf(photoIndex)+dir+visible.length)%visible.length];renderPhoto()}
 $$('[data-photo]').forEach(card=>card.addEventListener('click',()=>{photoIndex=Number(card.dataset.photo);renderPhoto();openDialog($('#photo-dialog'))}));
 $('#viewer-prev').addEventListener('click',()=>photoMove(-1));$('#viewer-next').addEventListener('click',()=>photoMove(1));
@@ -57,10 +57,6 @@ $('#photo-dialog').addEventListener('keydown',e=>{if(e.key==='ArrowLeft')photoMo
 let touchStart=null;$('#viewer-image').addEventListener('touchstart',e=>{touchStart=e.changedTouches[0].clientX},{passive:true});$('#viewer-image').addEventListener('touchend',e=>{if(touchStart===null)return;const dx=e.changedTouches[0].clientX-touchStart;if(Math.abs(dx)>50)photoMove(dx<0?1:-1);touchStart=null},{passive:true});
 function renderDetail(){const t=translations[language],isRecord=detailType==='record';$('#detail-content').innerHTML='<img class="article-image" src="assets/'+(isRecord?'record':'partners')+'.webp" alt="'+(isRecord?t.recordAlt:'Trackday VIP Partners')+'"><p class="poster-note">'+(language==='es'?'Arte original compartido por Trackday VIP.':'Original artwork supplied by Trackday VIP.')+'</p>'}
 $$('[data-open]').forEach(button=>button.addEventListener('click',()=>{detailType=button.dataset.open;renderDetail();openDialog($('#detail-dialog'))}));
-$('#save-calendar')?.addEventListener('click',()=>{
-const text=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Trackday VIP//Calendar//ES','BEGIN:VEVENT','UID:sema2026@trackdayvip.com','DTSTAMP:20261018T120000Z','DTSTART;VALUE=DATE:20261103','DTEND;VALUE=DATE:20261107','SUMMARY:SEMA Show 2026','LOCATION:Las Vegas Convention Center - Nevada - USA','DESCRIPTION:Industry event. Admission details at https://semashow.com','URL:https://semashow.com','END:VEVENT','END:VCALENDAR'].join('\r\n')+'\r\n';
-const url=URL.createObjectURL(new Blob([text],{type:'text/calendar;charset=utf-8'}));const link=document.createElement('a');link.href=url;link.download='SEMA-Show-2026.ics';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-});
 if('IntersectionObserver' in window){const reveal=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('reveal-in');reveal.unobserve(entry.target)}}),{threshold:.12});$$('.news-layout,.calendar-layout,.gallery-heading,.champ-layout,.partners-heading').forEach(el=>reveal.observe(el))}
 
 const contacts=window.TRACKDAY_CONTACTS||{};
