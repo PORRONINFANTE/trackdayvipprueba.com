@@ -371,3 +371,79 @@ body.no-scroll .floating-whatsapp-main{visibility:hidden}
 .real-contact-details{margin-top:42px;gap:18px}
 .real-contact-details>a{font-size:15px}
 }
+/* A destination for conversation, with a relevant invitation on every page. */
+.contact-invitation{margin:0 4.5% 65px;padding:38px 42px;border:1px solid #bb965e55;background:linear-gradient(115deg,#bb965e17,#11130fd9);display:flex;align-items:center;justify-content:space-between;gap:45px;position:relative;isolation:isolate}
+.contact-invitation:before{content:'';position:absolute;left:0;top:30px;bottom:30px;width:2px;background:var(--gold)}
+.contact-invitation>div{max-width:760px}
+.contact-invitation h2{font-size:clamp(30px,3.2vw,45px);line-height:1.05;margin:16px 0}
+.contact-invitation p{font-size:15px;line-height:1.8;color:var(--muted);margin:0}
+.contact-invitation>.gold-button{min-width:205px;flex-shrink:0;font-size:12px}
+.contact-page .section-top{margin-bottom:35px}
+.contact-intro-layout{display:grid;grid-template-columns:1.05fr 1fr;gap:7%;align-items:center;margin-bottom:50px}
+.contact-heading>.label{font-size:12px;margin-bottom:20px}
+.contact-heading h1{font-size:clamp(48px,5.2vw,78px);line-height:.98}
+.contact-intro{font-size:17px;line-height:1.8;color:var(--muted);margin:28px 0}
+.inquiry-context{font-size:12px;line-height:1.7;color:var(--gold);padding:13px 16px;border-left:2px solid var(--gold);background:#bb965e0d;margin:25px 0}
+.inquiry-context[hidden]{display:none}
+.contact-country{display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:1.4px;margin-top:28px;color:#c2c7b8}
+.contact-country img{width:30px;height:20px;border-radius:2px}
+.contact-photo{position:relative;aspect-ratio:5/4;overflow:hidden}
+.contact-photo>img{width:100%;height:100%;object-fit:cover;object-position:center 50%}
+.contact-photo:after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 30%,#090a09d9)}
+.contact-photo-caption{position:absolute;left:28px;bottom:28px;z-index:1}
+.contact-photo-caption>small{font-size:11px;letter-spacing:2px;color:var(--gold)}
+.contact-photo-caption>strong{font:600 36px/1.05 var(--display);display:block;margin-top:13px}
+.contact-platforms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.contact-platform{position:relative;padding:30px 25px;border:1px solid var(--line);background:#151810;display:flex;flex-direction:column;align-items:flex-start;transition:border-color .25s,transform .25s,background .25s;min-width:0}
+.contact-platform:hover{transform:translateY(-5px);border-color:var(--gold);background:#1a1c14}
+.platform-icon{width:56px;height:56px;border:1px solid #bb965e70;border-radius:50%;display:grid;place-items:center;color:var(--gold);margin-bottom:28px}
+.platform-icon>svg{width:27px;height:27px;fill:currentColor}
+.platform-icon>svg.stroke-icon{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.contact-whatsapp .platform-icon{background:#25d366;color:#fff;border-color:#25d366}
+.platform-order{position:absolute;top:37px;right:26px;font-size:12px;letter-spacing:1px;color:var(--muted)}
+.contact-platform h2{font-size:38px;line-height:1.1}
+.contact-platform>p{font-size:15px;line-height:1.75;color:var(--muted);margin:20px 0 25px}
+.platform-address{font-size:13px;line-height:1.7;color:#d6dccd;overflow-wrap:anywhere;margin-top:auto;width:100%}
+.platform-cta{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;font-size:11px;font-weight:600;line-height:1.6;letter-spacing:.6px;color:var(--gold);border-top:1px solid var(--line);padding-top:22px;margin-top:24px}
+.platform-cta .icon-arrow{width:22px;height:22px}
+.contact-signoff{font-size:15px;line-height:1.8;color:var(--muted);text-align:center;margin:35px auto 0;max-width:700px}
+@media(max-width:1360px){.desktop-nav{display:none}.menu-toggle{display:block}}
+@media(max-width:760px){
+.contact-invitation{margin:0 6% 42px;padding:27px 24px;display:block}
+.contact-invitation h2{font-size:34px;line-height:1.08}
+.contact-invitation p{font-size:14px}
+.contact-invitation>.gold-button{margin-top:25px;min-width:0;width:100%;font-size:12px;padding:17px 20px}
+.contact-intro-layout{display:flex;flex-direction:column;gap:30px;margin-bottom:30px}
+.contact-heading>.label{font-size:11px;letter-spacing:.8px;margin-bottom:20px}
+.contact-heading h1{font-size:clamp(43px,11.5vw,63px)}
+.contact-intro{font-size:15px;line-height:1.8;margin:25px 0}
+.inquiry-context{font-size:12px}
+.contact-country{font-size:11px;letter-spacing:.8px;margin-top:24px}
+.contact-photo{width:100%;aspect-ratio:4/3}
+.contact-photo-caption{left:23px;bottom:23px}
+.contact-photo-caption>strong{font-size:32px}
+.contact-platforms{grid-template-columns:1fr;gap:18px}
+.contact-platform{padding:27px 24px}
+.platform-icon{margin-bottom:23px}
+.contact-platform h2{font-size:36px}
+.contact-platform>p{font-size:15px;margin:18px 0 23px}
+.platform-address{font-size:14px}
+.platform-cta{font-size:12px}
+.contact-signoff{font-size:14px;margin-top:28px;text-align:left}
+.mobile-dock a{width:16.666%;min-width:0;font-size:12px}
+.mobile-dock svg{width:22px;height:22px}
+}
+@media(max-width:360px){.mobile-dock a{font-size:11.5px}.contact-invitation{padding:25px 21px}.contact-invitation h2{font-size:30px}.platform-address{font-size:13px}}
+/* Contact stands apart as the menu's primary action. */
+.contact-menu-icon{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;flex-shrink:0}
+.desktop-nav a.contact-menu-cta{display:flex;align-items:center;gap:9px;margin-left:10px;padding:13px 19px;border:1px solid var(--gold);border-radius:999px;background:var(--gold);color:var(--ink);font-weight:700}
+.desktop-nav a.contact-menu-cta:hover{background:#c9a975;border-color:#c9a975;color:var(--ink)}
+.desktop-nav a.contact-menu-cta[aria-current=page]{background:var(--ink);color:var(--gold);border-color:var(--gold)}
+.menu a.contact-menu-cta{display:flex;align-items:center;gap:15px;margin-top:24px;padding:18px 23px;background:var(--gold);color:var(--ink);border:1px solid var(--gold);border-radius:12px;font-size:30px}
+.menu a.contact-menu-cta .contact-menu-icon{width:25px;height:25px}
+.menu a.contact-menu-cta>span:last-child{margin:0 0 0 auto;font:inherit;color:inherit}
+.menu a.contact-menu-cta[aria-current=page]{background:#11130f;color:var(--gold)}
+@media(max-width:760px){
+.mobile-dock a[href="contact.html"]{background:var(--gold);color:var(--ink);border:1px solid var(--gold);border-radius:10px}
+.mobile-dock a[href="contact.html"][aria-current=page]{background:var(--ink);color:var(--gold)}
+}

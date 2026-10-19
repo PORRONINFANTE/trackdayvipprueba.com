@@ -20,7 +20,7 @@ const photos=[{src:'grid',alt:'gridAlt',title:'gallery1',category:'paddock'},{sr
 function updateCount(){const counter=$('#photo-count');if(counter)counter.textContent=String($$('.photo-card:not([hidden])').length).padStart(2,'0')+(language==='es'?' FOTOS':' PHOTOS');}
 function setLanguage(next){
 language=next;const t=translations[next];document.documentElement.lang=next;
-const names={home:t.homeNav,news:'Breaking News',calendar:'Calendar',gallery:'Photo Galleries',championship:t.navChamp,partners:'Partners',article:'SEMA Show 2026'};
+const names={home:t.homeNav,contact:t.navContact,news:'Breaking News',calendar:'Calendar',gallery:'Photo Galleries',championship:t.navChamp,partners:'Partners',article:'SEMA Show 2026'};
 document.title=names[page]+' | Trackday VIP';
 $('meta[name="description"]').content=names[page]+(next==='es'?' — El mundo Trackday VIP Motorsport México.':' — The world of Trackday VIP Motorsport Mexico.');
 $$('[data-t]').forEach(el=>{if(t[el.dataset.t])el.innerHTML=t[el.dataset.t]});
@@ -28,7 +28,7 @@ $$('[data-alt]').forEach(el=>{el.alt=t[el.dataset.alt]});
 $$('[data-lang]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.lang===next)));
 if($('#article-content'))$('#article-content').innerHTML=article[next];
 $$('[data-contact]').forEach(el=>{const platform=el.dataset.contact;el.setAttribute('aria-label',platform==='instagram'?'Instagram @trackday.vip':platform==='email'?'Email direcciongral@trackdayvip.com':'WhatsApp +52 443 945 7617')});
-updateCount();if($('#photo-dialog').open)renderPhoto();if($('#detail-dialog').open)renderDetail();normalizeArrows();
+updateCount();if($('#photo-dialog').open)renderPhoto();if($('#detail-dialog').open)renderDetail();updateContactContext();normalizeArrows();
 }
 $$('[data-lang]').forEach(button=>button.addEventListener('click',()=>{setLanguage(button.dataset.lang);try{localStorage.setItem('trackday-language',language)}catch{}}));
 let saved;try{saved=localStorage.getItem('trackday-language')}catch{}setLanguage(saved==='en'?'en':'es');
@@ -69,3 +69,15 @@ const value=contacts[link.dataset.contact];
 if(value){link.href=value;link.removeAttribute('aria-disabled');if(value.startsWith('mailto:'))link.removeAttribute('target');else link.setAttribute('target','_blank');link.setAttribute('rel','noopener noreferrer');}
 else {const notify=e=>{e.preventDefault();$('#contact-status').textContent=translations[language].contactUnavailable;};link.addEventListener('click',notify);link.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){notify(e)}});}
 });
+
+function updateContactContext(){
+ if(page!=='contact')return;
+ const t=translations[language],topic=new URLSearchParams(location.search).get('topic');
+ const topicName=t['topic_'+topic];
+ const context=$('#inquiry-context');
+ context.hidden=!topicName;
+ if(topicName)context.textContent=t.inquiryPrefix+' '+topicName;
+ const message=topicName?t.topicWaPrefix+topicName+t.topicWaSuffix:t.defaultWa;
+ $('[data-channel="whatsapp"]').href='https://wa.me/524439457617?text='+encodeURIComponent(message);
+ $('[data-channel="email"]').href='mailto:direcciongral@trackdayvip.com?subject='+encodeURIComponent('Trackday VIP | '+(topicName||t.navContact));
+}
